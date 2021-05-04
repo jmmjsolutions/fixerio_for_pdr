@@ -1,2 +1,5 @@
 # fixerio_for_pdr
-An extension for panda_datareader to use the Fixer.io forex api
+Fixer is a simple and lightweight API for
+current and historical foreign exchange (forex) rates.
+ 
+This package allows the panda_datareader to use the fixer api.
