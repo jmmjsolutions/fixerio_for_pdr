@@ -16,7 +16,10 @@ TEST_API_KEY = os.getenv("FIXERIO_API_KEY")
     TEST_API_KEY is None,
     reason="The environment variable FIXERIO_API_KEY must be set with a valid Fixer API access key.",
 )
-class TestFixerForex(object):
+class TestFixerForexRealAPI(object):
+    """
+    Test fixer forex class using real fixer.io api endpoint
+    """
     @classmethod
     def setup_class(cls):
         pass
@@ -86,7 +89,7 @@ class TestFixerForex(object):
         with pytest.raises(RemoteDataError):
             df = pdr.get_exchange_rate_fixerio(symbols=["XXX", "YYY", "ZZZ"])
 
-    def test_multiple_good_and_bad_currency_quote_symbols(self, api_key=TEST_API_KEY):
+    def test_multiple_good_and_bad_currency_quote_symbols(self):
         """
         GIVEN a list of valid and invalid currency codes
         WHEN the get_exchange_rate_fixerio method is called
