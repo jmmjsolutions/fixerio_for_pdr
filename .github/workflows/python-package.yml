@@ -39,4 +39,4 @@ jobs:
     - name: Test with pytest
       run: |
         # only run mocked api tests
-        pytest fixerio_for_pdr/tests/test_fixer_for_pdr_forex_with_mock_pdr.py
+        FIXERIO_API_KEY=testkey pytest fixerio_for_pdr/tests/test_fixer_for_pdr_forex_with_mock_pdr.py
