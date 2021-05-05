@@ -21,6 +21,7 @@ class TestFixerForex(object):
     def setup_class(cls):
         pass
 
+
     def test_single_bad_currency_quote_symbol_raises_exception(self):
         """
         GIVEN an invalid currency code
@@ -34,7 +35,7 @@ class TestFixerForex(object):
         """
         GIVEN a single currency code
         WHEN the get_exchange_rate_fixerio method is called
-        THEN a dataframe with today's exchanges rate for the currency cods
+        THEN a dataframe with today's exchanges rate for the currency codes
         is returned
         """
         today = datetime.utcnow().date()
@@ -131,3 +132,16 @@ class TestFixerForex(object):
         assert isinstance(df, pd.DataFrame)
         assert len(df.index) == 4
         assert_index_equal(df.index, pd.Index(["AUD", "GBP", "SGD", "USD"]))
+
+    def test_no_currency_quote_symbol_no_start_date(self):
+        """
+        GIVEN no currency code or UTC start date
+        WHEN the get_exchange_rate_fixerio method is called
+        THEN a dataframe with today's exchanges rate for all
+        currency codes is returned
+        """
+        today = datetime.utcnow().date()
+        df = pdr.get_exchange_rate_fixerio(api_key=TEST_API_KEY)
+        assert isinstance(df, pd.DataFrame)
+        assert len(df.index) == 168
+        assert df.iloc[0][0] == today
