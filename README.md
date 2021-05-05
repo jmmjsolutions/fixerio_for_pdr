@@ -1,6 +1,7 @@
 # fixerio_for_pdr
 Fixer is a simple and lightweight API for current and historical foreign exchange (forex) rates. 
-Free registration is required to get an API key.
+Free registration is required to get an API key. The free subscription is restricted to a base
+currency of EUR.
  
 The Pandas datareader (https://pandas-datareader.readthedocs.io/) is a pydatas package that allows a pandas user to create a dataframe 
 from various internet datasources, currently including: Yahoo! Finance. Google Finance.
@@ -24,7 +25,7 @@ The package can be installed from [GitHub](https://github.com/jmmjsolutions/fixe
   import pandas_datareader as pdr
   import fixerio_for_pdr
 
-  df = pdr.get_exchange_rate_fixerio('AUD')
+  df = pdr.get_exchange_rate_fixerio(symbols='AUD')
 
   print(df)
           Date    ExRate
